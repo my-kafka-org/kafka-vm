@@ -19,6 +19,7 @@ resource "google_compute_instance" "default" {
   #metadata_startup_script = "sudo apt-get update && sudo apt-get install apache2 -y && echo '<!doctype html><html><body><h1>Hello from Terraform on Google Cloud!</h1></body></html>' | sudo tee /var/www/html/index.html"
   #metadata_startup_script = "${file("${path.module}/bootstrap_nginx.tpl")}"
   metadata_startup_script = file("${path.module}/boot.sh")
+  ssh-keys = "thirupalanivel:${file(var.ssh_key)}"
 
   network_interface {
     network = "default"
