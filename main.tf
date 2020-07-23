@@ -4,11 +4,11 @@ resource "random_id" "instance_id" {
 
 
 resource "google_compute_instance" "default" {
-  name         = "vm-${random_id.instance_id.hex}"
+  #name         = "vm-${random_id.instance_id.hex}"
+  name         = "kafka-vm"
   machine_type = "n1-standard-2"
   #machine_type = "f1-micro"
   zone         = "us-west1-a"
-  hostname     = "kafkavm"
 
   boot_disk {
     initialize_params {
@@ -16,9 +16,6 @@ resource "google_compute_instance" "default" {
       image = "centos-8-v20200714"
     }
   }
-
-  #metadata_startup_script = "sudo apt-get update && sudo apt-get install apache2 -y && echo '<!doctype html><html><body><h1>Hello from Terraform on Google Cloud!</h1></body></html>' | sudo tee /var/www/html/index.html"
-  #metadata_startup_script = "${file("${path.module}/bootstrap_nginx.tpl")}"
   metadata_startup_script = file("${path.module}/boot.sh")
   metadata = {
   ssh-keys = "thirupalanivel:${var.ssh_key}"
