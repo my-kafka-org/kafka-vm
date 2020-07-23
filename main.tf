@@ -5,16 +5,18 @@ resource "random_id" "instance_id" {
 
 resource "google_compute_instance" "default" {
   name         = "vm-${random_id.instance_id.hex}"
-  machine_type = "f1-micro"
+  machine_type = "n2-standard-2"
   zone         = "us-west1-a"
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+ #     image = "debian-cloud/debian-9"
+      image = "centos-8-v20200714"
     }
   }
 
-  metadata_startup_script = "sudo apt-get update && sudo apt-get install apache2 -y && echo '<!doctype html><html><body><h1>Hello from Terraform on Google Cloud!</h1></body></html>' | sudo tee /var/www/html/index.html"
+  #metadata_startup_script = "sudo apt-get update && sudo apt-get install apache2 -y && echo '<!doctype html><html><body><h1>Hello from Terraform on Google Cloud!</h1></body></html>' | sudo tee /var/www/html/index.html"
+  metadata_startup_script = "${file("${path.module}/bootstrap_nginx.tpl")}"
 
   network_interface {
     network = "default"
