@@ -8,6 +8,7 @@ resource "google_compute_instance" "default" {
   machine_type = "n1-standard-2"
   #machine_type = "f1-micro"
   zone         = "us-west1-a"
+  hostname     = "kafka-vm"
 
   boot_disk {
     initialize_params {
