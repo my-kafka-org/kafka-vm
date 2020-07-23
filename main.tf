@@ -20,7 +20,7 @@ resource "google_compute_instance" "default" {
   #metadata_startup_script = "${file("${path.module}/bootstrap_nginx.tpl")}"
   metadata_startup_script = file("${path.module}/boot.sh")
   metadata = {
-  ssh-keys = "thirupalanivel:${file(var.ssh_key)}"
+  ssh-keys = "thirupalanivel:${var.ssh_key}"
   }
 
   network_interface {
