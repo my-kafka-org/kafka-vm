@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function install_nginx() {
-    sudo yum update
+    sudo yum update -y
     sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     sudo yum install -y epel-release
     sudo yum update -y
