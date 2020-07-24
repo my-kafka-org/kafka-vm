@@ -21,8 +21,8 @@ sudo mkdir -p  /kafka_2.13-2.5.0/data/kafka
 sudo echo "export PATH=/kafka_2.13-2.5.0/bin:\$PATH" >> ~/.bashrc
 sudo gsutil cp gs://kafka-config-san/server.properties /kafka_2.13-2.5.0/config
 sudo gsutil cp gs://kafka-config-san/zookeeper.properties /kafka_2.13-2.5.0/config
-sudo zookeeper-server-start.sh /kafka_2.13-2.5.0/config/zookeeper.properties &
-sudo kafka-server-start.sh /kafka_2.13-2.5.0/config/server.properties &
+sudo /kafka_2.13-2.5.0/bin/zookeeper-server-start.sh /kafka_2.13-2.5.0/config/zookeeper.properties &
+sudo /kafka_2.13-2.5.0/bin/kafka-server-start.sh /kafka_2.13-2.5.0/config/server.properties &
 }
 install_nginx
 install_kafka
