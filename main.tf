@@ -6,8 +6,8 @@ resource "random_id" "instance_id" {
 resource "google_compute_instance" "default" {
   #name         = "vm-${random_id.instance_id.hex}"
   name         = "kafka-vm"
-  #machine_type = "n1-standard-2"
-  machine_type = "f1-micro"
+  machine_type = "n1-standard-2"
+  #machine_type = "f1-micro"
   zone         = "us-west1-a"
 
   boot_disk {
