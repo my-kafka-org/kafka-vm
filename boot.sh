@@ -16,9 +16,8 @@ sudo yum install -y wget
 sudo wget https://apachemirror.sg.wuchna.com/kafka/2.5.0/kafka_2.13-2.5.0.tgz
 sudo gunzip kafka_2.13-2.5.0.tgz
 sudo tar -xvf kafka_2.13-2.5.0.tar
-sudo mkdir -p  /root/kafka_2.13-2.5.0/data/zookeeper
-sudo pathtxt="export PATH=/root/kafka_2.13-2.5.0/bin:\$PATH"
-sudo echo $pathtxt >> ~/.bashrc
+sudo mkdir -p  /kafka_2.13-2.5.0/data/zookeeper
+sudo echo "export PATH=/kafka_2.13-2.5.0/bin:\$PATH" >> ~/.bashrc
 }
 
 install_nginx
