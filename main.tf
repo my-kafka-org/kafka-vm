@@ -2,23 +2,22 @@ resource "random_id" "instance_id" {
   byte_length = 8
 }
 
-
 resource "google_compute_instance" "default" {
   #name         = "vm-${random_id.instance_id.hex}"
   name         = "kafka-vm"
   machine_type = "n1-standard-2"
   #machine_type = "f1-micro"
-  zone         = "us-west1-a"
+  zone = "us-west1-a"
 
   boot_disk {
     initialize_params {
- #     image = "debian-cloud/debian-9"
+      #     image = "debian-cloud/debian-9"
       image = "centos-8-v20200714"
     }
   }
   metadata_startup_script = file("${path.module}/boot.sh")
   metadata = {
-  ssh-keys = "thirupalanivel:${var.ssh_key}"
+    ssh-keys = "thirupalanivel:${var.ssh_key}"
   }
 
   network_interface {
